@@ -1,0 +1,44 @@
+from selenium import webdriver
+from selenium.webdriver.common.by import By
+from selenium.webdriver.support import expected_conditions as EC
+from selenium.webdriver.support.ui import WebDriverWait
+# from time import sleep
+
+taikhoan = r'C:\Users\dell\PycharmProjects\pythonProject1\tk'
+chrome_option = webdriver.ChromeOptions()
+chrome_option.add_argument("user-data-dir="+taikhoan)
+driver = webdriver.Chrome()
+# sleep(1)
+driver.get('https://www.pinterest.co.uk/')
+# sleep(1)
+print('Thanh Cong')
+try:
+    driver.find_element(By.XPATH,
+                        '/html/body/div[1]/div/div[1]/div/div/div/div/div[1]/div/div[2]/div[2]/button/div/div').click()
+    # sleep(1)
+    driver.find_element(By.ID, "email").send_keys('duykhanh17032002@gmail.com')
+    # sleep(1)
+    driver.find_element(By.ID, "password").send_keys('spxexepress')
+    # sleep(1)
+    driver.find_element(By.XPATH,
+                        '/html/body/div[1]/div/div[1]/div[2]/div/div/div/div/div/div[4]/form/div[7]/button').click()
+    # sleep(5)
+except:
+	print('Loi')
+	pass
+
+anh = r'C:\Users\dell\PycharmProjects\pythonProject1\1.jpg'
+driver.get('https://www.pinterest.co.uk/pin-builder/')
+# sleep(3)
+driver.find_element(By.XPATH, '/html/body/div[1]/div/div[1]/div/div[2]/div/div/div/div[2]/div[3]/div/div/div[3]/div/div/div[1]/div/div[1]/div/input').send_keys(anh)
+# sleep(3)
+driver.find_element(By.XPATH, '/html/body/div[1]/div/div[1]/div/div[2]/div/div/div/div[2]/div[3]/div/div/div[3]/div/div/div[2]/div/div/div[1]/div/span/div/input').send_keys('đây là tiêu đề')
+# sleep(3)
+driver.find_element(By.XPATH, '/html/body/div[1]/div/div[1]/div/div[2]/div/div/div/div[2]/div[3]/div/div/div[3]/div/div/div[2]/div/div/div[2]/div/div[2]/div/div/div/div[1]/div/div/div[2]/div/div/div/div').send_keys('đây là mô tả')
+# sleep(2)
+driver.find_element(By.XPATH, '/html/body/div[1]/div/div[1]/div/div[2]/div/div/div/div[2]/div[3]/div/div/div[2]/div[4]/div[2]/div/button/div/div').click()
+# sleep(3)
+
+WebDriverWait(driver, 60).until(EC.element_to_be_clickable((By.XPATH, "/html/body/div[2]/div/div/a/div/div/div/div[3]/button/div/div"))).click()
+# sleep(40)
+print('đã post xong ảnh lên pinterest')
